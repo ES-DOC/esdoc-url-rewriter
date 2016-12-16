@@ -28,28 +28,31 @@ def _get_app_endpoints():
 
     result = set()
 
-    # Add set of further info URL rewrites.
-    for project in handlers.documentation_url.DOC_TYPES:
-        result.add((
-            r'/fiu/({0})/(.*)'.format(project),
-            handlers.FurtherInfoURLRewriteRequestHandler
-            ))
+    # Documentation URL.
+    if config.rewriteTarget == "doc":
+        for project, doc_types in handlers.documentation_url.DOC_TYPES.items():
+            result.add((
+                r'/({0})'.format(project),
+                handlers.DocumentationURLRewriteRequestHandler
+                ))
+            for doc_type in doc_types:
+                result.add((
+                    r'/({0})/({1})'.format(project, doc_type),
+                    handlers.DocumentationURLRewriteRequestHandler
+                    ))
+                result.add((
+                    r'/({0})/({1})/(.*)'.format(project, doc_type),
+                    handlers.DocumentationURLRewriteRequestHandler
+                    ))
 
-    # Add set of documentation URL rewrites.
-    for project, doc_types in handlers.documentation_url.DOC_TYPES.items():
-        result.add((
-            r'/({0})'.format(project),
-            handlers.DocumentationURLRewriteRequestHandler
-            ))
-        for doc_type in doc_types:
+    # Further info URL.
+    elif config.rewriteTarget == "fi":
+        for project in handlers.further_info_url.PROJECTS:
             result.add((
-                r'/({0})/({1})'.format(project, doc_type),
-                handlers.DocumentationURLRewriteRequestHandler
+                r'/({0})/(.*)'.format(project),
+                handlers.FurtherInfoURLRewriteRequestHandler
                 ))
-            result.add((
-                r'/({0})/({1})/(.*)'.format(project, doc_type),
-                handlers.DocumentationURLRewriteRequestHandler
-                ))
+
 
     return result
 

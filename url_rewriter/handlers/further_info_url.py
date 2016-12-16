@@ -18,7 +18,7 @@ from url_rewriter.utils.http import write_error
 
 
 # Set of supported projects.
-PROJECT = {
+PROJECTS = {
     "cmip6",
 }
 
@@ -35,13 +35,22 @@ class FurtherInfoURLRewriteRequestHandler(tornado.web.RequestHandler):
 
         """
         # Validate prior to processing.
-        _validate_request(self)
+        _validate_request(self, mip_era, further_info)
 
         # Parse input parameters.
         mip_era, further_info = _reformat_inputs(mip_era, further_info)
         institution_id, source_id, experiment_id, variant_label = further_info.split('.')
 
-        print mip_era, institution_id, source_id, experiment_id, variant_label
+        # TEMPORARY: simply return something to browser.
+        self.write({
+            'message': "TODO: resolve metadata and render view",
+            'experiment_id': experiment_id,
+            'institution_id': institution_id,
+            'mip_era': mip_era,
+            'source_id': source_id,
+            'variant_label': variant_label,
+            })
+        self.set_header("Content-Type", "application/json; charset=utf-8")
         return
 
         # Redirect.
@@ -56,7 +65,7 @@ class FurtherInfoURLRewriteRequestHandler(tornado.web.RequestHandler):
         self.redirect(url, permanent=False)
 
 
-def _validate_request(handler):
+def _validate_request(handler, mip_era, further_info):
     """Validates request prior to processing.
 
     """
@@ -64,6 +73,8 @@ def _validate_request(handler):
     # TODO: validate body
     # TODO: validate parameters
     # TODO: validate attachments
+    # TODO: validate mip_era is supported
+    # TODO: validate further_info format
     return True
 
 
@@ -86,7 +97,14 @@ def _reformat_inputs(mip_era, further_info):
     return mip_era, further_info
 
 
-def _get_redirect_url(handler, mip_era, institution_id, source_id, experiment_id, variant_label):
+def _get_redirect_url(
+    handler,
+    mip_era,
+    institution_id,
+    source_id,
+    experiment_id,
+    variant_label
+    ):
     """Gets redirect url.
 
     """
