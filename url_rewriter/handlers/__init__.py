@@ -1,0 +1,2 @@
+from url_rewriter.handlers.documentation_url import DocumentationURLRewriteRequestHandler
+from url_rewriter.handlers.further_info_url import FurtherInfoURLRewriteRequestHandler

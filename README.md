@@ -1,2 +1,2 @@
 # esdoc-ws-url-rewriter
-Documentation URL rewriter micro-service
+ES-DOC URL rewriter web-service
