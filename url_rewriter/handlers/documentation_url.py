@@ -93,8 +93,7 @@ class DocumentationURLRewriteRequestHandler(tornado.web.RequestHandler):
 
         # Redirect.
         url = _get_redirect_url(self, project, doc_type, doc_name)
-        print url
-        # self.redirect(url, permanent=False)
+        self.redirect(url, permanent=False)
 
 
 def _reformat_inputs(project, doc_type, doc_name):
