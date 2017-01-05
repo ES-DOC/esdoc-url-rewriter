@@ -25,6 +25,13 @@ PROJECTS = {
 # Query parameter names.
 _PARAM_CLIENT_ID = 'client'
 
+# Map of target host's.
+_HOSTS = {
+    "prod": "http://documentation.es-doc.org",
+    "test": "http://test.documentation.es-doc.org",
+    "dev": "http://documentation.es-doc.org",
+}
+
 
 class FurtherInfoURLRewriteRequestHandler(tornado.web.RequestHandler):
     """Rewrites viewer URL requests.
@@ -41,19 +48,7 @@ class FurtherInfoURLRewriteRequestHandler(tornado.web.RequestHandler):
         mip_era, further_info = _reformat_inputs(mip_era, further_info)
         institution_id, source_id, experiment_id, variant_label = further_info.split('.')
 
-        # TEMPORARY: simply return something to browser.
-        self.write({
-            'message': "TODO: resolve metadata and render view",
-            'experiment_id': experiment_id,
-            'institution_id': institution_id,
-            'mip_era': mip_era,
-            'source_id': source_id,
-            'variant_label': variant_label,
-            })
-        self.set_header("Content-Type", "application/json; charset=utf-8")
-        return
-
-        # Redirect.
+        # Calculate new url.
         url = _get_redirect_url(
             self,
             mip_era,
@@ -62,6 +57,8 @@ class FurtherInfoURLRewriteRequestHandler(tornado.web.RequestHandler):
             experiment_id,
             variant_label
             )
+
+        # Redirect.
         self.redirect(url, permanent=False)
 
 
@@ -110,10 +107,10 @@ def _get_redirect_url(
     """
     # Set URL host type.
     if 'localhost' in handler.request.host:
-        url_host_type = "dev"
+        host = _HOSTS['dev']
     elif 'test' in handler.request.host:
-        url_host_type = "test"
+        host = _HOSTS['test']
     else:
-        url_host_type = "prod"
+        host = _HOSTS['prod']
 
-    raise NotImplementedError()
+    return "{}/{}/experiments/{}".format(host, mip_era, experiment_id)

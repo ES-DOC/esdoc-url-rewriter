@@ -12,9 +12,6 @@
 """
 import tornado
 
-from url_rewriter.utils.http import log_error
-from url_rewriter.utils.http import write_error
-
 
 
 # Map of project to cim document types.
@@ -88,11 +85,12 @@ class DocumentationURLRewriteRequestHandler(tornado.web.RequestHandler):
         _validate_request(self)
 
         # Parse input parameters.
-        project, doc_type, doc_name = \
-            _reformat_inputs(project, doc_type, doc_name)
+        project, doc_type, doc_name = _reformat_inputs(project, doc_type, doc_name)
+
+        # Calculate new url.
+        url = _get_redirect_url(self, project, doc_type, doc_name)
 
         # Redirect.
-        url = _get_redirect_url(self, project, doc_type, doc_name)
         self.redirect(url, permanent=False)
 
 
