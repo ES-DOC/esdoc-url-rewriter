@@ -15,6 +15,7 @@ alias url-rewriter-config-update=$ESDOC_URL_REWRITER_HOME/sh/config_update.sh
 alias url-rewriter-ws=$ESDOC_URL_REWRITER_HOME/sh/ws_run.sh
 alias url-rewriter-ws-daemon-init=$ESDOC_URL_REWRITER_HOME/sh/web_daemon_init.sh
 alias url-rewriter-ws-daemon-kill=$ESDOC_URL_REWRITER_HOME/sh/web_daemon_kill.sh
+alias url-rewriter-ws-daemon-reload='url-rewriter-ws-daemon-kill && url-rewriter-ws-daemon-init'
 alias url-rewriter-ws-daemon-status=$ESDOC_URL_REWRITER_HOME/sh/web_daemon_status.sh
 alias url-rewriter-ws-logs-reset=$ESDOC_URL_REWRITER_HOME/sh/web_logs_reset.sh
 
