@@ -1,0 +1,46 @@
+# ###############################################################
+# STANDARD-SECTION: SETUP
+# ###############################################################
+
+# Set home path
+export REWRITER_WS_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export REWRITER_WS_HOME="$( cd "$( dirname "${REWRITER_WS_HOME[0]}" )" && pwd )"
+
+# Set pip
+export REWRITER_WS_PIP=pip
+
+# ###############################################################
+# STANDARD-SECTION: OPERATIONS
+# ###############################################################
+
+# Ensure shell scripts are executable.
+chmod a+x $REWRITER_WS_HOME/sh/*.sh
+
+# Ensure ops directories exist
+mkdir -p $REWRITER_WS_HOME/ops
+mkdir -p $REWRITER_WS_HOME/ops/config
+mkdir -p $REWRITER_WS_HOME/ops/daemon
+mkdir -p $REWRITER_WS_HOME/ops/libs
+mkdir -p $REWRITER_WS_HOME/ops/logs
+
+# ###############################################################
+# STANDARD-SECTION: ALIASES
+# ###############################################################
+
+# Install / update.
+alias rewriter-ws-install=$REWRITER_WS_HOME/sh/install.sh
+alias rewriter-ws-update=$REWRITER_WS_HOME/sh/update.sh
+alias rewriter-ws-update-config=$REWRITER_WS_HOME/sh/update_config.sh
+
+# Logs commands.
+alias rewriter-ws-reset-logs=$REWRITER_WS_HOME/sh/reset_logs.sh
+
+# Web-service commands.
+alias rewriter-ws=$REWRITER_WS_HOME/sh/app_run.sh
+alias rewriter-ws-daemon=$REWRITER_WS_HOME/sh/daemon_start.sh
+alias rewriter-ws-daemon-stop=$REWRITER_WS_HOME/sh/daemon_stop.sh
+alias rewriter-ws-daemon-reload='rewriter-ws-daemon-stop && rewriter-ws-daemon-start'
+alias rewriter-ws-daemon-status=$REWRITER_WS_HOME/sh/daemon_status.sh
+
+# Test related commands.
+alias rewriter-ws-tests=$REWRITER_WS_HOME/sh/run_tests.sh

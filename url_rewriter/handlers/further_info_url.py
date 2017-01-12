@@ -12,9 +12,6 @@
 """
 import tornado
 
-from url_rewriter.utils.http import log_error
-from url_rewriter.utils.http import write_error
-
 
 
 # Set of supported projects.

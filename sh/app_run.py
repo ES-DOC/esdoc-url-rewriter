@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: run_web_service.py
+.. module:: app_run.py
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Runs the url-rewriter web-service.
+   :synopsis: Runs the web-service.
 
-.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark A. Greenslade
 
 """
 import sys
-import url_rewriter
+import url_rewriter as APP
+
 
 
 def _main():
@@ -19,18 +20,24 @@ def _main():
     """
     # Run web service.
     try:
-        url_rewriter.run()
+        APP.run()
 
     # Handle unexpected exceptions.
     except Exception as err:
-        # Simple log to stdout.
-        print err
-
         # Ensure that web-service is stopped.
         try:
-            url_rewriter.stop()
+            APP.stop()
         except:
             pass
+
+        # Ensure that all active db transactions are cancelled.
+        try:
+            APP.db.session.rollback()
+        except:
+            pass
+
+        # Simple log to stdout.
+        print err
 
     # Signal exit.
     finally:
