@@ -52,14 +52,14 @@ for key, value in DEFAULT_DOC_TYPES.items():
 # Map of target URL's.
 _URLS = {
     "search": {
-        "prod": "http://search.es-doc.org",
-        "test": "http://test.search.es-doc.org",
-        "dev": "http://search.es-doc.org",
+        "prod": "https://search.es-doc.org",
+        "test": "https://test-search.es-doc.org",
+        "dev": "https://search.es-doc.org",
     },
     "view": {
-        "prod": "http://view.es-doc.org",
-        "test": "http://test.view.es-doc.org",
-        "dev": "http://view.es-doc.org",
+        "prod": "https://view.es-doc.org",
+        "test": "https://test-view.es-doc.org",
+        "dev": "https://view.es-doc.org",
     }
 }
 
