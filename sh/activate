@@ -39,7 +39,7 @@ alias rewriter-ws-reset-logs=$REWRITER_WS_HOME/sh/reset_logs.sh
 alias rewriter-ws=$REWRITER_WS_HOME/sh/app_run.sh
 alias rewriter-ws-daemon=$REWRITER_WS_HOME/sh/daemon_start.sh
 alias rewriter-ws-daemon-stop=$REWRITER_WS_HOME/sh/daemon_stop.sh
-alias rewriter-ws-daemon-reload='rewriter-ws-daemon-stop && rewriter-ws-daemon-start'
+alias rewriter-ws-daemon-reload=$REWRITER_WS_HOME/sh/daemon_reload.sh
 alias rewriter-ws-daemon-status=$REWRITER_WS_HOME/sh/daemon_status.sh
 
 # Test related commands.
