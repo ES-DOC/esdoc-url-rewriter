@@ -114,10 +114,6 @@ def _reformat_inputs(project, doc_type, doc_name):
         if len(doc_name) == 0:
             doc_name = None
 
-    # Reroute cmip6 to cmip6-draft.
-    if project == u"cmip6":
-        project = "cmip6-draft"
-
     return project, doc_type, doc_name
 
 

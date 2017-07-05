@@ -84,10 +84,6 @@ def _reformat_inputs(mip_era, further_info):
     if len(further_info) == 0:
         further_info = None
 
-    # Reroute cmip6 to cmip6-draft.
-    if mip_era == u"cmip6":
-        mip_era = "cmip6-draft"
-
     return mip_era, further_info
 
 
