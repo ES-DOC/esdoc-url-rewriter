@@ -53,6 +53,18 @@ def _get_app_endpoints():
                 handlers.FurtherInfoURLRewriteRequestHandler
                 ))
 
+    # Specializations.
+    elif config.rewriteTarget == "specs":
+        for project, topics in handlers.specializations.PROJECTS.items():
+            result.add((
+                r'/({0})'.format(project),
+                handlers.SpecializationsURLRewriteRequestHandler
+                ))
+            for topic in topics:
+                result.add((
+                    r'/({0})/({1})'.format(project, topic),
+                    handlers.SpecializationsURLRewriteRequestHandler
+                    ))
 
     return result
 
