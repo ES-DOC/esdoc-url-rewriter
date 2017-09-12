@@ -31,9 +31,9 @@ PROJECTS = {
 
 # Map of target URL's.
 _URLS = {
-    'prod': 'https://specializations.es-doc.org',
-    'test': 'https://test-specializations.es-doc.org',
-    'dev': 'https://specializations.es-doc.org',
+    'prod': 'https://view-specializations.es-doc.org',
+    'test': 'https://test-view-specializations.es-doc.org',
+    'dev': 'https://view-specializations.es-doc.org',
 }
 
 # Map of target URL's params.
