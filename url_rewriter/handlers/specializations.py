@@ -16,16 +16,6 @@ import tornado
 
 # Set of supported projects.
 PROJECTS = {
-    'cmip5': {
-        'aerosol',
-        'atmos',
-        'atmoschem',
-        'land',
-        'landice',
-        'ocean',
-        'ocnbgchem',
-        'seaice'
-    },
     'cmip6': {
         'aerosol',
         'atmos',
