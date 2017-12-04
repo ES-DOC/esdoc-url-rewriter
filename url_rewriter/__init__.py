@@ -10,10 +10,10 @@
 
 """
 __title__ = 'URL rewriter web service'
-__version__ = '0.1.0.0.0'
+__version__ = '0.2.0.0.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
-__copyright__ = 'Copyright 2016: IPSL'
+__copyright__ = 'Copyright 2018: IPSL'
 
 from url_rewriter.app import run
 from url_rewriter.app import stop
