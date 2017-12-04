@@ -11,6 +11,7 @@ main()
 	cd $REWRITER_WS_HOME
 	git pull
     log "shell updated"
+	source $REWRITER_WS_HOME/sh/update_config.sh
 	source $REWRITER_WS_HOME/sh/update_venv.sh
 
     log "update complete"
