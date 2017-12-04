@@ -35,7 +35,7 @@ class FurtherInfoRewriteRequestHandler(tornado.web.RequestHandler):
         """
         # Destructure url.
         url = self.request.path[1:]
-        mip_era = url.split('.')[0]
+        mip_era = url.split('.')[0].lower()
 
         # Validate prior to processing.
         _validate_request(self, mip_era, url)
