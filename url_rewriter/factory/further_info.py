@@ -34,7 +34,8 @@ def _yield_cmip6():
 			for experiment in pyessv.load('wcrp:cmip6:experiment-id'):
 				for sub_experiment_id in [i for i in experiment.data['sub_experiment_id']]:
 					for field in {'canonical_name', 'raw_name'}:
-						yield r'/cmip6.{}.{}.{}.{}.r[0-9]i[0-9]p[0-9]f[0-9]'.format(
+						yield r'/{}.{}.{}.{}.{}.r[0-9]i[0-9]p[0-9]f[0-9]'.format(
+							'cmip6' if field == 'canonical_name' else 'CMIP6',
 							getattr(institution, field),
 							getattr(source, field),
 							getattr(experiment, field),
