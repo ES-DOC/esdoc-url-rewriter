@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: handlers.rewrite.documentation_url.py
+.. module:: handlers.rewrite.specializations.py
    :license: GPL/CeCIL
    :platform: Unix
    :synopsis: Rewrites documentation URL's.
@@ -43,7 +43,7 @@ _URL_PARAMS = '/?target={0}&client={1}'
 _PARAM_CLIENT_ID = 'client'
 
 
-class SpecializationsURLRewriteRequestHandler(tornado.web.RequestHandler):
+class SpecializationsRewriteRequestHandler(tornado.web.RequestHandler):
     """Rewrites viewer URL requests.
 
     """

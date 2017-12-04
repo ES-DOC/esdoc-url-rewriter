@@ -43,4 +43,4 @@ alias rewriter-ws-daemon-reload=$REWRITER_WS_HOME/sh/daemon_reload.sh
 alias rewriter-ws-daemon-status=$REWRITER_WS_HOME/sh/daemon_status.sh
 
 # Test related commands.
-alias rewriter-ws-tests=$REWRITER_WS_HOME/sh/run_tests.sh
+alias rewriter-ws-tests=$REWRITER_WS_HOME/runtests.sh
