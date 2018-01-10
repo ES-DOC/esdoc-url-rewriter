@@ -6,6 +6,9 @@
 export REWRITER_WS_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export REWRITER_WS_HOME="$( cd "$( dirname "${REWRITER_WS_HOME[0]}" )" && pwd )"
 
+# Set python path
+export PYTHONPATH=$REWRITER_WS_HOME:$PYTHONPATH
+
 # Set pip
 export REWRITER_WS_PIP=pip
 
