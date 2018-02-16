@@ -9,7 +9,7 @@
 
 
 """
-from pyessv import vocabs
+import pyessv
 
 
 
@@ -29,7 +29,7 @@ def _yield_cmip6():
 
 	"""
 	# Set pointer to CMIP6 vocabs accessor.
-	cmip6 = vocabs.wcrp.cmip6
+	cmip6 = pyessv.WCRP.cmip6
 
 	# Yield URL's based upon vocab canonical or raw names.
 	for source in cmip6.source_id:
