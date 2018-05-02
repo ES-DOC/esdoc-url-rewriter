@@ -21,15 +21,3 @@ def yield_urls():
         yield r'/({0})'.format(project)
         for topic in topics:
             yield r'/({0})/({1})'.format(project, topic)
-
-
-        # for project, topics in handlers.specializations.PROJECTS.items():
-        #     result.add((
-        #         r'/({0})'.format(project),
-        #         handlers.SpecializationsURLRewriteRequestHandler
-        #         ))
-        #     for topic in topics:
-        #         result.add((
-        #             r'/({0})/({1})'.format(project, topic),
-        #             handlers.SpecializationsURLRewriteRequestHandler
-        #             ))

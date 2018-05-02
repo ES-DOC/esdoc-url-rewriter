@@ -54,12 +54,11 @@ def _get_app():
     """Returns application instance.
 
     """
-    endpoints = _get_app_endpoints()
-    log("Endpoint to handler mappings:")
-    for url, handler in sorted(endpoints, key=lambda i: i[0]):
-        log("{0} ---> {1}".format(url, str(handler).split(".")[-1][0:-2]))
-
-    return tornado.web.Application(endpoints, debug=True, **_get_app_settings())
+    return tornado.web.Application(
+        _get_app_endpoints(),
+        debug=config.mode=='dev',
+        **_get_app_settings()
+        )
 
 
 def run():

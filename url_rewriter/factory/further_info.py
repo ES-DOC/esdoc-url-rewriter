@@ -37,11 +37,10 @@ def _yield_cmip6():
 			for experiment in cmip6.experiment_id:
 				for sub_experiment_id in experiment.sub_experiment_id:
 					for field in {'canonical_name', 'raw_name'}:
-						yield r'/{}.{}.{}.{}.{}.{}'.format(
+						yield r'/{}.{}.{}.{}.{}.(.*)'.format(
 							'cmip6' if field == 'canonical_name' else 'CMIP6',
 							getattr(institution, field),
 							getattr(source, field),
 							getattr(experiment, field),
-							sub_experiment_id,
-							cmip6.ensemble.term_regex
+							sub_experiment_id
 							)
