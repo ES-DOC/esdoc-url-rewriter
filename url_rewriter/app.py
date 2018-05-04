@@ -10,6 +10,8 @@
 
 
 """
+import os
+
 import tornado.web
 
 from url_rewriter import factory
@@ -44,10 +46,14 @@ def _get_app_settings():
     """Returns app settings.
 
     """
-    return {
+    settings = {
         "cookie_secret": config.cookie_secret,
         "compress_response": True
     }
+    if config.staticFilePath:
+        settings['static_path'] = config.staticFilePath
+
+    return settings
 
 
 def _get_app():

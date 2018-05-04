@@ -18,20 +18,6 @@ from url_rewriter.utils import config
 
 
 
-# Example redirect.
-# http://localhost:8000/?target=cmip6.ipsl.ipsl-cm6a-lr.dcppa-hindcast-niff.s2000.r1
-
-# Query parameter names.
-_PARAM_CLIENT_ID = 'client'
-
-# Map of target host's.
-_HOSTS = {
-    "prod": "https://view-furtherinfo.es-doc.org",
-    "test": "https://test-view-furtherinfo.es-doc.org",
-    "dev": "http://localhost:8000"
-}
-
-
 class FurtherInfoRewriteRequestHandler(tornado.web.RequestHandler):
     """Rewrites viewer URL requests.
 
@@ -48,7 +34,7 @@ class FurtherInfoRewriteRequestHandler(tornado.web.RequestHandler):
         _validate_request(self, mip_era, url)
 
         # Redirect.
-        redirect_url = '{}?target={}'.format(_HOSTS[config.mode], url)
+        redirect_url = '{}://{}/static/index.html?target={}'.format(self.request.protocol, self.request.host, url)
         self.redirect(redirect_url, permanent=False)
 
 
@@ -60,4 +46,11 @@ def _validate_request(handler, mip_era, url):
     # TODO: validate body
     # TODO: validate parameters
     # TODO: validate attachments
+    return True
+
+
+def _validate_cmip6_request(handler, url):
+    """Validates a CMIP6 request prior to processing.
+
+    """
     return True
