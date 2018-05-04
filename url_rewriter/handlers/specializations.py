@@ -29,13 +29,6 @@ PROJECTS = {
     }
 }
 
-# Map of target URL's.
-_URLS = {
-    'prod': 'https://view-specializations.es-doc.org',
-    'test': 'https://test-view-specializations.es-doc.org',
-    'dev': 'https://view-specializations.es-doc.org',
-}
-
 # Map of target URL's params.
 _URL_PARAMS = '/?target={0}&client={1}'
 
@@ -58,7 +51,12 @@ class SpecializationsRewriteRequestHandler(tornado.web.RequestHandler):
         project, topic = _reformat_inputs(project, topic)
 
         # Calculate new url.
-        url = _get_redirect_url(self, project, topic)
+        url = '{}://{}/static/index.html?target={}&client={}'.format(
+            self.request.protocol,
+            self.request.host,
+            ".".join([i for i in [project, topic] if i is not None]),
+            self.get_query_argument(_PARAM_CLIENT_ID, "esdoc-url-rewrite")
+            )
 
         # Redirect.
         self.redirect(url, permanent=False)
@@ -88,27 +86,3 @@ def _reformat_inputs(project, topic):
 
     return _reformat(project), \
            _reformat(topic)
-
-
-def _get_redirect_url(handler, project, topic):
-    """Gets redirect url.
-
-    """
-    # Set specialization targets.
-    targets = [i for i in [project, topic] if i is not None]
-
-    # Set URL host type.
-    if 'localhost' in handler.request.host:
-        url_host_type = "dev"
-    elif 'test' in handler.request.host:
-        url_host_type = "test"
-    else:
-        url_host_type = "prod"
-
-    # Set URL params.
-    url_params = _URL_PARAMS.format(
-        ".".join(targets),
-        handler.get_query_argument(_PARAM_CLIENT_ID, "esdoc-url-rewrite")
-        )
-
-    return "{}{}".format(_URLS[url_host_type], url_params)
