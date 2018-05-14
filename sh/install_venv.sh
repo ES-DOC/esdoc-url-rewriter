@@ -13,7 +13,7 @@ main()
     virtualenv $REWRITER_WS_HOME/ops/venv
     source $REWRITER_WS_HOME/sh/activate_venv.sh
     $REWRITER_WS_PIP install --upgrade pip
-    $REWRITER_WS_PIP install --upgrade --no-cache-dir -I -r $REWRITER_WS_HOME/resources/requirements.txt
+    $REWRITER_WS_PIP install --upgrade --no-cache-dir -I -r $REWRITER_WS_HOME/requirements.txt
     deactivate
 }
 

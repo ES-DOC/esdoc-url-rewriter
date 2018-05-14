@@ -1,4 +1,5 @@
 arrow
+jsonschema
 nose
 tornado
 requests
