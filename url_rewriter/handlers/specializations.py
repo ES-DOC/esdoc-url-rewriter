@@ -51,7 +51,7 @@ class SpecializationsRewriteRequestHandler(tornado.web.RequestHandler):
         project, topic = _reformat_inputs(project, topic)
 
         # Calculate new url.
-        url = '{}://{}/static/index.html?target={}&client={}'.format(
+        url = '{}://view-{}?target={}&client={}'.format(
             self.request.protocol,
             self.request.host,
             ".".join([i for i in [project, topic] if i is not None]),
