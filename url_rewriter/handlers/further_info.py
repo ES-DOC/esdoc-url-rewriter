@@ -16,7 +16,8 @@ import tornado
 
 from url_rewriter.utils import config
 
-
+# Base URL of ES-DOC explorer web application.
+EXPLORER_URL = r'https://explore.es-doc.org/{}/further-info?target={}'
 
 class FurtherInfoRewriteRequestHandler(tornado.web.RequestHandler):
     """Rewrites viewer URL requests.
@@ -34,7 +35,7 @@ class FurtherInfoRewriteRequestHandler(tornado.web.RequestHandler):
         _validate_request(self, mip_era, url)
 
         # Redirect.
-        redirect_url = '{}://{}/static/index.html?target={}'.format(self.request.protocol, self.request.host, url)
+        redirect_url = EXPLORER_URL.format(mip_era, url)
         self.redirect(redirect_url, permanent=False)
 
 
