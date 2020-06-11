@@ -9,7 +9,7 @@ main()
     log "running ..."
 
     pushd $REWRITER_WS_HOME
-	python $REWRITER_WS_HOME/sh/app_run.py
+	pipenv run python $REWRITER_WS_HOME/sh/app_run.py
 }
 
 # Invoke entry point.
