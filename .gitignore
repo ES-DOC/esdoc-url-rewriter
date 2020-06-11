@@ -24,3 +24,4 @@ url_rewriter.egg-info
 url_rewriter-ws.conf
 url_rewriter-supervisord.conf
 /ops
+*.lock

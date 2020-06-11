@@ -9,9 +9,6 @@ export REWRITER_WS_HOME="$( cd "$( dirname "${REWRITER_WS_HOME[0]}" )" && pwd )"
 # Set python path
 export PYTHONPATH=$REWRITER_WS_HOME:$PYTHONPATH
 
-# Set pip
-export REWRITER_WS_PIP=pip
-
 # ###############################################################
 # STANDARD-SECTION: OPERATIONS
 # ###############################################################
@@ -33,7 +30,6 @@ mkdir -p $REWRITER_WS_HOME/ops/logs
 # Install / update.
 alias rewriter-ws-install=$REWRITER_WS_HOME/sh/install.sh
 alias rewriter-ws-update=$REWRITER_WS_HOME/sh/update.sh
-alias rewriter-ws-update-config=$REWRITER_WS_HOME/sh/update_config.sh
 
 # Logs commands.
 alias rewriter-ws-reset-logs=$REWRITER_WS_HOME/sh/reset_logs.sh

@@ -8,7 +8,7 @@ main()
 {
     log "running ..."
 
-    source $REWRITER_WS_HOME/sh/activate_venv.sh
+    pushd $REWRITER_WS_HOME
 	python $REWRITER_WS_HOME/sh/app_run.py
 }
 

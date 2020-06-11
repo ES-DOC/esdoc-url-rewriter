@@ -13,7 +13,6 @@
 import uuid
 
 import arrow
-import requests
 
 from url_rewriter.utils import exceptions
 

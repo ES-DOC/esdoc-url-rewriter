@@ -81,7 +81,7 @@ def run():
 
     # Open port.
     app.listen(config.port)
-    log("Running @ port {}".format(config.port))
+    log("Running {} rewriter @ port {}".format(config.rewriteTarget, config.port))
 
     # Start processing requests.
     tornado.ioloop.IOLoop.instance().start()
