@@ -10,6 +10,7 @@ main()
 
     pushd $REWRITER_WS_HOME
 	pipenv run python $REWRITER_WS_HOME/sh/app_run.py
+    popd
 }
 
 # Invoke entry point.
