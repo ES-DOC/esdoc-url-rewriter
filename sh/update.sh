@@ -6,32 +6,20 @@ source $REWRITER_WS_HOME/sh/utils.sh
 # Main entry point.
 main()
 {
+    pushd $REWRITER_WS_HOME
+
     log "update starts ..."
 
-    _update_src
-	_update_config
-    _update_venv	
+    git pull
+    pipenv install
 
-    log "update complete"
-}
-
-_update_config()
-{
 	cp $REWRITER_WS_HOME/ops/config/supervisord.conf $REWRITER_WS_HOME/ops/config/supervisord-backup.conf
 	cp $REWRITER_WS_HOME/ops/config/ws.conf $REWRITER_WS_HOME/ops/config/ws-backup.conf
 	cp $REWRITER_WS_HOME/resources/*.conf $REWRITER_WS_HOME/ops/config
-}
 
-_update_src()
-{
-    pushd $REWRITER_WS_HOME
-	git pull
-}
+    log "update complete"
 
-_update_venv()
-{
-    pushd $REWRITER_WS_HOME
-    pipenv install
+    popd
 }
 
 # Invoke entry point.

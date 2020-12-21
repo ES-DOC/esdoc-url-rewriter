@@ -32,6 +32,7 @@ _install_venv()
     pip2 install --upgrade pip
     pip2 install --upgrade pipenv
 	pipenv install
+	popd
 }
 
 # Invoke entry point.
