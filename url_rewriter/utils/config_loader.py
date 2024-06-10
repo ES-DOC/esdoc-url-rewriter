@@ -11,7 +11,7 @@
 """
 import os
 
-import logger
+from . import logger
 
 from url_rewriter.utils.convertor import json_file_to_namedtuple
 
