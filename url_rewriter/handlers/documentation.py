@@ -44,9 +44,9 @@ DEFAULT_DOC_TYPES = {
 }
 
 # Implicit support for draft project documents.
-for key, value in list(DOC_TYPES.items()):
+for key, value in DOC_TYPES.items():
     DOC_TYPES["{}-draft".format(key)] = value
-for key, value in list(DEFAULT_DOC_TYPES.items()):
+for key, value in DEFAULT_DOC_TYPES.items():
     DEFAULT_DOC_TYPES["{}-draft".format(key)] = value
 
 # Map of target URL's.
