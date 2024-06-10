@@ -44,9 +44,9 @@ DEFAULT_DOC_TYPES = {
 }
 
 # Implicit support for draft project documents.
-for key, value in DOC_TYPES.items():
+for key, value in list(DOC_TYPES.items()):
     DOC_TYPES["{}-draft".format(key)] = value
-for key, value in DEFAULT_DOC_TYPES.items():
+for key, value in list(DEFAULT_DOC_TYPES.items()):
     DEFAULT_DOC_TYPES["{}-draft".format(key)] = value
 
 # Map of target URL's.
@@ -98,19 +98,19 @@ def _reformat_inputs(project, doc_type, doc_name):
     """Reforms request parameters.
 
     """
-    project = unicode(project).strip().lower()
+    project = str(project).strip().lower()
     if len(project) == 0:
         project = None
 
     if doc_type is not None:
-        doc_type = unicode(doc_type).strip().lower()
+        doc_type = str(doc_type).strip().lower()
         if len(doc_type) == 0:
             doc_type = None
     elif project in DEFAULT_DOC_TYPES:
         doc_type = DEFAULT_DOC_TYPES[project]
 
     if doc_name is not None:
-        doc_name = unicode(doc_name).strip().lower()
+        doc_name = str(doc_name).strip().lower()
         if len(doc_name) == 0:
             doc_name = None
 
