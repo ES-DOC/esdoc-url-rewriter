@@ -53,7 +53,7 @@ def write_error(handler, error):
     handler.clear()
 
     # Set reason code (exception shielding when not in PROD).
-    reason = unicode(error) if _can_return_debug_info(handler) else None
+    reason = str(error) if _can_return_debug_info(handler) else None
 
     # Set response code.
     try:

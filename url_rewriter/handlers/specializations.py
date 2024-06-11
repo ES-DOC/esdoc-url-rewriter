@@ -79,7 +79,7 @@ def _reformat_inputs(project, topic):
     """
     def _reformat(source):
         if source is not None:
-            source = unicode(source).strip().lower()
+            source = str(source).strip().lower()
             if len(source) == 0:
                 source = None
         return source

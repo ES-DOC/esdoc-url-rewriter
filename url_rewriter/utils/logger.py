@@ -14,7 +14,7 @@ import arrow
 
 
 # Set of logging levels.
-LOG_LEVEL_DEBUG = 'DUBUG'
+LOG_LEVEL_DEBUG = 'DEBUG'
 LOG_LEVEL_INFO = 'INFO'
 LOG_LEVEL_WARNING = 'WARNING'
 LOG_LEVEL_ERROR = 'ERROR'
@@ -37,10 +37,10 @@ def _get_formatted_message(msg, module, level):
         return _NULL_MSG
 
     return "{} [{}] :: ES-DOC > {} : {}".format(
-        unicode(arrow.get())[0:-13],
+        str(arrow.get())[0:-13],
         level,
         module,
-        unicode(msg).strip()
+        str(msg).strip()
         )
 
 
